@@ -1,0 +1,9 @@
+.effect-3d {
+    perspective: 1000px;
+  }
+  
+  .effect-3d-item {
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    transform-style: preserve-3d;
+  }
+  

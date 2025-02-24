@@ -4,6 +4,7 @@ import { RiCloseLine, RiMenu2Line, RiMoonLine, RiSunLine } from "@remixicon/reac
 import lightLogo from "../../assets/LogoLite.png"; // Import the light mode logo image
 import darkLogo from "../../assets/LogoDark.png"; // Import the dark mode logo image
 import { toggleDarkMode } from "../../redux/themeSlice";
+import "../Navbar/navbar.css"; // Import the CSS file for 3D effects
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -31,11 +32,11 @@ const Navbar = () => {
 
       {/* Menu List */}
       <ul className={`fixed top-0 h-full w-3/4 bg-white dark:bg-black bg-opacity-90 dark:bg-opacity-90 transition-all duration-300 ease-in-out flex flex-col items-center justify-center gap-6 md:static md:h-auto md:w-auto md:bg-transparent md:dark:bg-transparent md:flex-row md:gap-6 md:mx-0 md:py-0 md:px-0 z-40 
-        ${menu ? "right-0" : "-right-full"} md:justify-center`}>
-        <li className="text-black dark:text-white"><a href="#About" onClick={() => setMenu(false)}>About</a></li>
-        <li className="text-black dark:text-white"><a href="#Experience" onClick={() => setMenu(false)}>Experience</a></li>
-        <li className="text-black dark:text-white"><a href="#Projects" onClick={() => setMenu(false)}>Projects</a></li>
-        <li className="text-black dark:text-white"><a href="#Footer" onClick={() => setMenu(false)}>Contact</a></li>
+        ${menu ? "right-0" : "-right-full"} md:justify-center effect-3d`}>
+        <li className="text-black dark:text-white effect-3d-item"><a href="#About" onClick={() => setMenu(false)}><b>About</b></a></li>
+        <li className="text-black dark:text-white effect-3d-item"><a href="#Experience" onClick={() => setMenu(false)}>Experience</a></li>
+        <li className="text-black dark:text-white effect-3d-item"><a href="#Projects" onClick={() => setMenu(false)}>Projects</a></li>
+        <li className="text-black dark:text-white effect-3d-item"><a href="#Footer" onClick={() => setMenu(false)}>Contact</a></li>
       </ul>
 
       <div className="flex items-center">
