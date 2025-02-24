@@ -10,7 +10,6 @@ Welcome to **Vipul's Portfolio** – a modern, responsive personal portfolio bui
 - [Project Structure](#project-structure)
 - [Deployment](#deployment)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -146,7 +145,6 @@ This starter supports easy expansion with additional features like:
 
 ## License
 
-This project is **MIT Licensed**. Feel free to use and modify it as needed.
 
 ---
 🚀 Built with ❤️ by Vipul Khanvilkar
