@@ -35,42 +35,26 @@ const Experience = () => {
           </span>
         </div>
         <div>
-          <div className="flex gap-10 bg-slate-950 bg-opacity-45 mt-4 rounded-lg p-4 items-center">
-            <FaGoogle color="#4285F4" size={50} />
-            <span className="text-black dark:text-white">
-              <h2 className="leading-tight">Software Engineer , Google</h2>
-              <p className="text-sm leading-tight font-thin">
-                Sept 2023 - Present
-              </p>
-              <ul className="text-sm p-2">
-                <li>- Work as software developer</li>
-                <li>- Senior SDE-developer</li>
-              </ul>
-            </span>
-          </div>
-          <div className="flex gap-10 bg-slate-950 bg-opacity-45 mt-4 rounded-lg  p-4 items-center">
+          
+          <div className="flex gap-10 bg-gradient-to-br from-gray-700 via-gray-900 to-black mt-4 rounded-lg  p-4 items-center">
             <RiNetflixFill color="#E50914" size={50} />
             <span className="text-black dark:text-white">
-              <h2 className="leading-tight">Software Engineer, Google</h2>
-              <p className="text-sm leading-tight font-thin">
-                Sept 2023 - Present
+              <h2 className="leading-tight  text-white">Full Stack Developer, RateBotAi</h2>
+              <p className="text-sm leading-tight font-thin text-white">
               </p>
-              <ul className="text-sm p-2">
-                <li>- Work as software developer.</li>
-                <li>- Senior SDE-developer</li>
+              <ul className="text-sm p-2  text-white">
+                <li>- Work as Full Stack Developer.</li>
               </ul>
             </span>
           </div>
-          <div className="flex gap-10 bg-slate-950 bg-opacity-45 mt-4 rounded-lg  p-4 items-center">
+          <div className="flex gap-10 bg-gradient-to-br from-gray-700 via-gray-900 to-black mt-4 rounded-lg  p-4 items-center">
             <FaAmazon color="#FF9900" size={50} />
             <span className="text-black dark:text-white">
-              <h2 className="leading-tight">Software Engineer, Google</h2>
+              <h2 className="leading-tight text-white">Software Developer, Haven Infoline pvt ltd</h2>
               <p className="text-sm leading-tight font-thin">
-                Sept 2023 - Present
               </p>
-              <ul className="text-sm p-2">
+              <ul className="text-sm p-2 text-white">
                 <li>- Work as software developer.</li>
-                <li>- Senior SDE-developer</li>
               </ul>
             </span>
           </div>
