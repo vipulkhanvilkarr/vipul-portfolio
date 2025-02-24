@@ -5,3 +5,15 @@
 * {
   scroll-behavior: smooth;
 }
+
+/* Light Mode (Default) */
+body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Dark Mode */
+body.dark {
+  background-color: #0F0F0F;
+  color: #ffffff;
+}

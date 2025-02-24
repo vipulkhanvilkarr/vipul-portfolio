@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <div
       id="Footer"
-      className="flex justify-around bg-[#465697] text-white p-10 md:p-12 items-center"
+      className="flex justify-around bg-[#465697] text-black dark:text-white p-10 md:p-12 items-center"
     >
       <div>
         <h1 className="text-2xl md:text-6xl font-bold">Contact</h1>
