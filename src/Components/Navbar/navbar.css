@@ -1,9 +1,35 @@
 .effect-3d {
-    perspective: 1000px;
-  }
-  
-  .effect-3d-item {
-    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
-    transform-style: preserve-3d;
-  }
-  
+  perspective: 1000px;
+}
+
+.effect-3d-item {
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+.effect-3d-item:hover {
+  transform: rotateX(15deg) rotateY(15deg) translateZ(10px);
+  color: #ff6347; /* Change this color to your desired hover color */
+}
+
+.effect-3d:hover {
+  color: #ff6347; /* Change this color to your desired hover color */
+}
+
+body.dark .effect-3d-item:hover {
+  color: #ff6347; /* Change this color to your desired hover color for dark mode */
+}
+
+body.dark .effect-3d:hover {
+  color: #ff6347; /* Change this color to your desired hover color for dark mode */
+}
+
+/* Ensure the navbar is above other content */
+nav {
+  z-index: 1000;
+}
+
+/* Ensure the menu does not collapse with the Home section */
+ul {
+  z-index: 999;
+}

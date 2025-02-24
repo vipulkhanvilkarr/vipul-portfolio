@@ -4,7 +4,7 @@ import TextChange from "../TextChange";
 
 const Home = () => {
   return (
-    <div className="text-black dark:text-white flex w-full justify-between items-start p-10 md:p-20">
+    <div className="text-black dark:text-white flex w-full justify-between items-start p-10 md:p-20 pt-20 md:pt-32"> {/* Added pt-20 for mobile view and md:pt-32 for larger screens */}
       <div className="md:w-2/4 md:pt-10 ">
         <h1 className="text-xl md:text-6xl font-bold flex leading-normal tracking-tighter">
           <TextChange />

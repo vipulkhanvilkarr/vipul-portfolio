@@ -24,7 +24,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex flex-wrap justify-between md:items-center text-black dark:text-white px-10 pt-6 md:px-20 relative z-50">
+    <nav className="fixed top-0 left-0 w-full flex flex-wrap justify-between md:items-center text-black dark:text-white px-10 pt-6 md:px-20 bg-white dark:bg-black bg-opacity-90 dark:bg-opacity-90 shadow-lg z-50">
       <div className="flex items-center">
         <img src={darkMode ? darkLogo : lightLogo} alt="Logo" className="h-12 w-12 md:h-14 md:w-14" />
         <span className="ml-2 text-xl font-bold">V I P U L</span>

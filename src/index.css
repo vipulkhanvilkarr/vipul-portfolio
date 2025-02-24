@@ -18,36 +18,13 @@ body.dark {
   color: #ffffff;
 }
 
-.merriweather-sans-unique {
-  font-family: "Merriweather Sans", serif;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+body {
+  font-family: 'Open Sans', serif;
   font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: italic;
+  font-weight: 400; /* Default weight, you can change it as needed */
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
 }
 
-/* Global 3D Effect and Hover Styles */
-.effect-3d {
-  perspective: 1000px;
-}
-
-.effect-3d-item {
-  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
-  transform-style: preserve-3d;
-}
-
-.effect-3d-item:hover {
-  transform: rotateX(15deg) rotateY(15deg) translateZ(10px);
-  color: #ff6347; /* Change this color to your desired hover color */
-}
-
-.effect-3d:hover {
-  color: #ff6347; /* Change this color to your desired hover color */
-}
-
-body.dark .effect-3d-item:hover {
-  color: #ff6347; /* Change this color to your desired hover color for dark mode */
-}
-
-body.dark .effect-3d:hover {
-  color: #ff6347; /* Change this color to your desired hover color for dark mode */
-}
