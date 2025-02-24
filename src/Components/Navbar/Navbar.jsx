@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { RiCloseLine, RiMenu2Line, RiMoonLine, RiSunLine } from "@remixicon/react";
 import darkLogo from "../../assets/logo.png"; // Import the dark mode logo image
 import lightLogo from "../../assets/lite logo.jpg"; // Import the light mode logo image
+import { toggleDarkMode } from "../../redux/themeSlice";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const darkMode = useSelector((state) => state.theme.darkMode);
   const [menu, setMenu] = useState(false);
-  const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "enabled");
 
   useEffect(() => {
     if (darkMode) {
@@ -13,11 +16,10 @@ const Navbar = () => {
     } else {
       document.body.classList.remove("dark");
     }
-    localStorage.setItem("darkMode", darkMode ? "enabled" : "disabled");
   }, [darkMode]);
 
-  const toggleDarkMode = () => {
-    setDarkMode(prevMode => !prevMode);
+  const handleToggleDarkMode = () => {
+    dispatch(toggleDarkMode());
   };
 
   return (
@@ -28,7 +30,7 @@ const Navbar = () => {
       </div>
 
       {/* Menu List */}
-      <ul className={`fixed top-0 h-full w-3/4 bg-white dark:bg-black bg-opacity-90 dark:bg-opacity-90 transition-all duration-300 ease-in-out flex flex-col items-center justify-center gap-6 md:static md:h-auto md:w-auto md:bg-transparent md:flex-row md:gap-6 md:mx-0 md:py-0 md:px-0 z-40 
+      <ul className={`fixed top-0 h-full w-3/4 bg-white dark:bg-black bg-opacity-90 dark:bg-opacity-90 transition-all duration-300 ease-in-out flex flex-col items-center justify-center gap-6 md:static md:h-auto md:w-auto md:bg-transparent md:dark:bg-transparent md:flex-row md:gap-6 md:mx-0 md:py-0 md:px-0 z-40 
         ${menu ? "right-0" : "-right-full"} md:justify-center`}>
         <li className="text-black dark:text-white"><a href="#About" onClick={() => setMenu(false)}>About</a></li>
         <li className="text-black dark:text-white"><a href="#Experience" onClick={() => setMenu(false)}>Experience</a></li>
@@ -40,7 +42,7 @@ const Navbar = () => {
         {/* Dark Mode Toggle Button */}
         <button 
           className="p-2 rounded-md transition-all duration-300 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 mr-4" 
-          onClick={toggleDarkMode}
+          onClick={handleToggleDarkMode}
         >
           {darkMode ? <RiSunLine size={24} /> : <RiMoonLine size={24} />}
         </button>
