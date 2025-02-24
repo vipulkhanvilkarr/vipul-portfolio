@@ -7,7 +7,7 @@ import Projects from "./Components/Projects/Projects";
 
 function App() {
   return (
-    <div className="">
+    <div className="merriweather-sans-unique">
       <Navbar />
       <Home />
       <About />

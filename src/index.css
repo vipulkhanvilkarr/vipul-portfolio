@@ -17,3 +17,10 @@ body.dark {
   background-color: #0F0F0F;
   color: #ffffff;
 }
+
+.merriweather-sans-unique {
+  font-family: "Merriweather Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: italic;
+}

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RiCloseLine, RiMenu2Line, RiMoonLine, RiSunLine } from "@remixicon/react";
-import darkLogo from "../../assets/logo.png"; // Import the dark mode logo image
-import lightLogo from "../../assets/lite logo.jpg"; // Import the light mode logo image
+import lightLogo from "../../assets/LogoLite.png"; // Import the light mode logo image
+import darkLogo from "../../assets/LogoDark.png"; // Import the dark mode logo image
 import { toggleDarkMode } from "../../redux/themeSlice";
 
 const Navbar = () => {
