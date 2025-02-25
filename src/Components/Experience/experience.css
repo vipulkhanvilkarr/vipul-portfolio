@@ -1,0 +1,63 @@
+:root {
+    --icon-color-django: #092E20;
+    --icon-color-flask: #000000;
+    --icon-color-github: #181717;
+    --icon-color-vercel: #000000;
+    --icon-hover-shadow: rgba(0, 0, 0, 0.2);
+  }
+  
+  .dark {
+    --icon-color-django: #ffffff;
+    --icon-color-flask: #ffffff;
+    --icon-color-github: #ffffff;
+    --icon-color-vercel: #ffffff;
+    --icon-hover-shadow: rgba(255, 255, 255, 0.5);
+  }
+  
+  .tech-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  }
+  
+  .tech-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px var(--icon-hover-shadow);
+  }
+  
+  .tech-item span {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  /* Dark and Light Mode Animations */
+  .dark-mode-item {
+    animation: darkModeAnimation 0.5s ease-in-out;
+  }
+  
+  .light-mode-item {
+    animation: lightModeAnimation 0.5s ease-in-out;
+  }
+  
+  @keyframes darkModeAnimation {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+      box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+      box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0);
+    }
+  }
+  
+  @keyframes lightModeAnimation {
+    from {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  

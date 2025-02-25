@@ -1,28 +1,59 @@
 .perspective-2000 {
-    perspective: 2000px;
+  perspective: 2000px;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+@keyframes shine {
+  from {
+    transform: translateX(-100%) skewX(-15deg);
   }
-  
-  .rotate-y-180 {
-    transform: rotateY(180deg);
+  to {
+    transform: translateX(200%) skewX(-15deg);
   }
-  
-  .backface-hidden {
-    backface-visibility: hidden;
+}
+
+.animate-shine {
+  animation: shine 2s infinite;
+}
+
+/* Custom styles for About page cards */
+
+.custom-animation-class {
+  animation: custom-shine 2s infinite;
+}
+
+@keyframes custom-shine {
+  from {
+    transform: translateX(-100%) skewX(-15deg);
   }
-  
-  .preserve-3d {
-    transform-style: preserve-3d;
+  to {
+    transform: translateX(200%) skewX(-15deg);
   }
-  
-  @keyframes shine {
-    from {
-      transform: translateX(-100%) skewX(-15deg);
-    }
-    to {
-      transform: translateX(200%) skewX(-15deg);
-    }
+}
+
+/* Custom styles for Education cards */
+
+
+.custom-education-animation-class {
+  animation: none !important;
+}
+
+@keyframes custom-education-shine {
+  from {
+    transform: translateX(-100%) skewX(-15deg);
   }
-  
-  .animate-shine {
-    animation: shine 2s infinite;
+  to {
+    transform: translateX(200%) skewX(-15deg);
   }
+}

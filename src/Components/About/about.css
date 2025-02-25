@@ -1,0 +1,38 @@
+/* Ensure perspective for 3D effect */
+.education-card {
+  perspective: 1000px;
+  width: 100%;
+  height: 100%;
+}
+
+/* Container for flipping effect */
+.flipper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+/* Apply the flip effect on hover */
+.education-card:hover .flipper {
+  transform: rotateY(180deg);
+}
+
+/* Front and back sides */
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Keep back face identical and flipped */
+.flip-back {
+  transform: rotateY(180deg);
+}
