@@ -46,7 +46,7 @@ const Navbar = () => {
           className="p-2 rounded-md transition-all duration-300 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 mr-4" 
           onClick={handleToggleDarkMode}
         >
-          {darkMode ? <RiSunLine size={24} /> : <RiMoonLine size={24} />}
+          {darkMode ? <RiSunLine size={25} /> : <RiMoonLine size={24} />}
         </button>
 
         {/* Menu Toggle Button */}
