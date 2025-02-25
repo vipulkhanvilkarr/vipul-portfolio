@@ -1,8 +1,9 @@
 import React from "react";
 import { FaCss3, FaFigma, FaHtml5, FaJs, FaReact, FaPython, FaGit, FaGithub, FaLinux } from "react-icons/fa";
-import { SiRedis, SiMongodb, SiDjango, SiFlask, SiRubyonrails, SiMysql, SiPostgresql, SiSqlite, SiMicrosoftsqlserver, SiNetlify, SiVercel, SiPowerbi, SiRedux, SiBootstrap, SiTailwindcss } from "react-icons/si";
-import '../Experience/Experience.css'; // Import the CSS file for additional styles
+import { SiRedis, SiMongodb, SiDjango,  SiFlask, SiRubyonrails, SiMysql, SiPostgresql, SiSqlite, SiMicrosoftsqlserver, SiNetlify, SiVercel, SiPowerbi, SiRedux, SiBootstrap, SiTailwindcss, SiTypescript } from "react-icons/si";
+import "../Experience/Experience.css";
 import { IoLogoVercel } from "react-icons/io5";
+import { RiNextjsFill } from "@remixicon/react";
 
 const Experience = () => {
   const technologies = [
@@ -19,7 +20,6 @@ const Experience = () => {
     { icon: <SiPostgresql color="#336791" size={50} />, name: "PostgreSQL" },
     { icon: <SiSqlite color="#003B57" size={50} />, name: "SQLite" },
     { icon: <SiMicrosoftsqlserver color="#CC2927" size={50} />, name: "SQL Server" },
-    { icon: <FaGit color="#F05032" size={50} />, name: "Git" },
     { icon: <FaGithub style={{ color: "var(--icon-color-github)" }} size={50} />, name: "GitHub" },
     { icon: <SiNetlify color="#00C7B7" size={50} />, name: "Netlify" },
     { icon: <IoLogoVercel style={{ color: "var(--icon-color-vercel)" }} size={50} />, name: "Vercel" },
@@ -28,6 +28,9 @@ const Experience = () => {
     { icon: <SiBootstrap color="#7952B3" size={50} />, name: "Bootstrap" },
     { icon: <SiTailwindcss color="#06B6D4" size={50} />, name: "Tailwind CSS" },
     { icon: <FaLinux color="#FCC624" size={50} />, name: "Linux" },
+    { icon: <SiTypescript color="#3178C6" size={50} />, name: "TypeScript" },
+    { icon: <RiNextjsFill color="var(--icon-color-github)" size={50} />, name: "Next.js" },
+    
   ];
 
   return (
