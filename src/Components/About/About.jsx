@@ -1,7 +1,7 @@
 import React from "react";
 import AboutImg from "../../assets/human3.png"; // Updated image path
 import Card from "../../Components/Card/Card"; // Import the Card component
-import "./About.css"; // Import CSS file
+import "../About/About.css"; // Import the CSS file for additional styles
 
 const About = () => {
   const cardData = {

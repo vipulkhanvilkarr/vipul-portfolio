@@ -1,7 +1,7 @@
 import React from "react";
 import { FaCss3, FaFigma, FaHtml5, FaJs, FaReact, FaPython, FaGit, FaGithub, FaLinux } from "react-icons/fa";
 import { SiRedis, SiMongodb, SiDjango, SiFlask, SiRubyonrails, SiMysql, SiPostgresql, SiSqlite, SiMicrosoftsqlserver, SiNetlify, SiVercel, SiPowerbi, SiRedux, SiBootstrap, SiTailwindcss } from "react-icons/si";
-import './Experience.css'; // Import the CSS file for additional styles
+import '../Experience/Experience.css'; // Import the CSS file for additional styles
 import { IoLogoVercel } from "react-icons/io5";
 
 const Experience = () => {
