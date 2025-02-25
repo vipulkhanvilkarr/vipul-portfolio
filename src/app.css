@@ -1,0 +1,24 @@
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --icon-color-django: #092E20;
+    --icon-color-flask: #000000;
+    --icon-color-github: #181717;
+    --icon-color-vercel: #000000;
+    --icon-hover-shadow: rgba(0, 0, 0, 0.2);
+  }
+  
+  .dark {
+    --background-color: #000000;
+    --text-color: #ffffff;
+    --icon-color-django: #ffffff;
+    --icon-color-flask: #ffffff;
+    --icon-color-github: #ffffff;
+    --icon-color-vercel: #ffffff;
+    --icon-hover-shadow: rgba(255, 255, 255, 0.5);
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }

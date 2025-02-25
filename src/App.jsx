@@ -1,3 +1,5 @@
+import React from 'react';
+import './app.css'; // Import the CSS file
 import About from "./Components/About/About";
 import Experience from "./Components/Experience/Experience";
 import Footer from "./Components/Footer/Footer";

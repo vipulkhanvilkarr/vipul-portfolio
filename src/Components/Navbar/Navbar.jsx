@@ -1,25 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { RiCloseLine, RiMenu2Line, RiMoonLine, RiSunLine } from "@remixicon/react";
+import { toggleDarkMode } from "../../redux/themeSlice";
 import lightLogo from "../../assets/LogoLite.png"; // Import the light mode logo image
 import darkLogo from "../../assets/LogoDark.png"; // Import the dark mode logo image
-import { toggleDarkMode } from "../../redux/themeSlice";
 import "../Navbar/navbar.css"; // Import the CSS file for 3D effects
 
 const Navbar = () => {
-  const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
+  const dispatch = useDispatch();
   const [menu, setMenu] = useState(false);
 
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add("dark");
-    } else {
-      document.body.classList.remove("dark");
-    }
-  }, [darkMode]);
-
-  const handleToggleDarkMode = () => {
+  const handleToggleTheme = () => {
     dispatch(toggleDarkMode());
   };
 
@@ -44,7 +36,7 @@ const Navbar = () => {
         {/* Dark Mode Toggle Button */}
         <button 
           className="p-2 rounded-md transition-all duration-300 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 mr-4" 
-          onClick={handleToggleDarkMode}
+          onClick={handleToggleTheme}
         >
           {darkMode ? <RiSunLine size={25} /> : <RiMoonLine size={24} />}
         </button>
