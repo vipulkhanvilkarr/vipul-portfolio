@@ -22,18 +22,17 @@ const Navbar = () => {
         <span className="ml-2 text-xl font-bold">V I P U L</span>
       </div>
 
-      {/* Menu List */}
+      /* Menu List */
       <ul className={`fixed top-0 h-full w-3/4 bg-white dark:bg-black bg-opacity-90 dark:bg-opacity-90 transition-all duration-300 ease-in-out flex flex-col items-center justify-center gap-6 md:static md:h-auto md:w-auto md:bg-transparent md:dark:bg-transparent md:flex-row md:gap-6 md:mx-0 md:py-0 md:px-0 z-40 
         ${menu ? "right-0" : "-right-full"} md:justify-center effect-3d`}>
         <li className="text-black dark:text-white effect-3d-item"><a href="#Home" onClick={() => setMenu(false)}><b>Home</b></a></li>
         <li className="text-black dark:text-white effect-3d-item"><a href="#About" onClick={() => setMenu(false)}>About</a></li>
         <li className="text-black dark:text-white effect-3d-item"><a href="#Experience" onClick={() => setMenu(false)}>Experience</a></li>
         <li className="text-black dark:text-white effect-3d-item"><a href="#Projects" onClick={() => setMenu(false)}>Projects</a></li>
-        <li className="text-black dark:text-white effect-3d-item"><a href="#Footer" onClick={() => setMenu(false)}>Contact</a></li>
+        <li className="text-black dark:text-white effect-3d-item"><a href="#Contact" onClick={() => setMenu(false)}>Contact</a></li>
       </ul>
 
       <div className="flex items-center">
-        {/* Dark Mode Toggle Button */}
         <button 
           className="p-2 rounded-md transition-all duration-300 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 mr-4" 
           onClick={handleToggleTheme}
