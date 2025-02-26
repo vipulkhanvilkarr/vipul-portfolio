@@ -8,6 +8,7 @@ import {
 } from "@remixicon/react";
 import lightLogo from "../../assets/LogoLite.png";
 import darkLogo from "../../assets/LogoDark.png";
+import name from "../../assets/name.png";
 import "./footer.css";
 
 const Footer = () => {
@@ -24,7 +25,7 @@ const Footer = () => {
               alt="Logo" 
               className="h-12 w-12 md:h-14 md:w-14" 
             />
-            <span className="mt-2 text-xl font-bold">V I P U L</span>
+        <img src={name} alt="Name" className="h-30 w-20 md:h-30 md:w-30" />
           </div>
 
           {/* Footer Navigation */}

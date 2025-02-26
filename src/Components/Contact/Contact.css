@@ -8,8 +8,8 @@
 }
 
 .contact__card {
-background: linear-gradient(to bottom right, #374151, #111827, #000000);    
-border-radius: 10px;
+  background: linear-gradient(to bottom right, #374151, #111827, #000000);    
+  border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   width: 100%;
@@ -107,18 +107,18 @@ border-radius: 10px;
 .contact__form-group input,
 .contact__form-group textarea {
   padding: 0.8rem;
-  border: linear-gradient(to bottom right, #374151, #111827, #000000);
+  border: 1px solid #374151; /* Changed to solid border */
   border-radius: 5px;
   font-size: 1rem;
   transition: all 0.3s;
   transform-style: preserve-3d;
-  background: white;
-  color: white; /* Set text color to white */
+  background: white; /* Set background to white */
+  color: black; /* Set text color to black */
 }
 
 .contact__form-group input::placeholder,
 .contact__form-group textarea::placeholder {
-  color: rgba(255, 255, 255, 0.7); /* Placeholder color */
+  color: rgba(0, 0, 0, 0.7); /* Placeholder color */
 }
 
 .contact__form-group input:focus,
@@ -127,7 +127,7 @@ border-radius: 10px;
   outline: none;
   box-shadow: 0 10px 20px rgba(74, 110, 224, 0.1);
   transform: translateY(-2px) scale(1.01);
-  color: white; /* Ensure text color remains white on focus */
+  color: black; /* Ensure text color remains black on focus */
 }
 
 .contact__submit-button {
@@ -185,19 +185,38 @@ border-radius: 10px;
   }
 }
 
-.contact__input-icon {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #ccc;
-  transition: all 0.3s;
+.contact__error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  margin: 1rem 0;
+  animation: errorPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
 }
 
-.contact__form-group input:focus ~ .contact__input-icon,
-.contact__form-group textarea:focus ~ .contact__input-icon {
-  color: #4a6ee0;
-  transform: translateY(-50%) rotateY(180deg);
+@keyframes errorPop {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotateX(-20deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotateX(0);
+  }
+}
+
+.contact__loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.contact__loader img {
+  width: 50px;
+  height: 50px;
 }
 
 /* 3D floating animation */

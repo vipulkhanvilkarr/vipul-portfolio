@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Contact.css';
+import loaderGif from '../../assets/loader.gif'; // Adjust the path as necessary
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const Contact = () => {
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const cardRef = useRef(null);
 
   // Function to handle 3D rotation effect
@@ -87,15 +89,19 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log('Form submitted:', formData);
-    // Here you would typically send the data to your backend
+    setError(''); // Clear any previous error
 
-    // Add 3D animation for submission
-    const form = e.target;
-    form.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-    form.style.transform = 'rotateX(10deg) scale(0.95)';
-
+    // Simulate form submission
     setTimeout(() => {
+      // Simulate an error
+      const hasError = Math.random() > 0.5;
+
+      if (hasError) {
+        setError('An error occurred while submitting the form. Please try again.');
+        setLoading(false);
+        return;
+      }
+
       setSubmitted(true);
       setLoading(false);
 
@@ -108,91 +114,94 @@ const Contact = () => {
           message: ''
         });
         setSubmitted(false);
-
-        if (form) {
-          form.style.transform = 'rotateX(0) scale(1)';
-        }
       }, 3000);
-    }, 500);
+    }, 2000);
   };
 
-return (
+  return (
     <div className="contact__container" id="Contact">
-        <div
-            className="contact__card"
-            ref={cardRef}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-        >
-            <h2 className="contact__title">Contact Us</h2>
-            <p className="contact__subtitle">We'd love to hear from you. Please fill out the form below.</p>
-
-            {submitted ? (
-                <div className="contact__success-message">
-                    <p>Thank you for your message! We'll get back to you soon.</p>
-                </div>
-            ) : (
-                <form onSubmit={handleSubmit} className="contact__form" aria-live="polite">
-                    <div className="contact__form-group">
-                        <label htmlFor="name">Name</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            required
-                            aria-required="true"
-                        />
-                    </div>
-
-                    <div className="contact__form-group">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                            aria-required="true"
-                        />
-                    </div>
-
-                    <div className="contact__form-group">
-                        <label htmlFor="subject">Subject</label>
-                        <input
-                            type="text"
-                            id="subject"
-                            name="subject"
-                            value={formData.subject}
-                            onChange={handleChange}
-                            required
-                            aria-required="true"
-                        />
-                    </div>
-
-                    <div className="contact__form-group">
-                        <label htmlFor="message">Message</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows="5"
-                            value={formData.message}
-                            onChange={handleChange}
-                            required
-                            aria-required="true"
-                        ></textarea>
-                    </div>
-
-                    <button type="submit" className="contact__submit-button" disabled={loading}>
-                        {loading ? 'Sending...' : 'Send Message'}
-                    </button>
-                </form>
+      <div
+        className="contact__card"
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        {loading ? (
+          <div className="contact__loader">
+            <img src={loaderGif} alt="Loading..." />
+          </div>
+        ) : submitted ? (
+          <div className="contact__success-message">
+            <p>Thank you for your message! We'll get back to you soon.</p>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="contact__form" aria-live="polite">
+            {error && (
+              <div className="contact__error-message">
+                <p>{error}</p>
+              </div>
             )}
-        </div>
+
+            <div className="contact__form-group">
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                aria-required="true"
+              />
+            </div>
+
+            <div className="contact__form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                aria-required="true"
+              />
+            </div>
+
+            <div className="contact__form-group">
+              <label htmlFor="subject">Subject</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                required
+                aria-required="true"
+              />
+            </div>
+
+            <div className="contact__form-group">
+              <label htmlFor="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                aria-required="true"
+              ></textarea>
+            </div>
+
+            <button type="submit" className="contact__submit-button" disabled={loading}>
+              {loading ? 'Sending...' : 'Send Message'}
+            </button>
+          </form>
+        )}
+      </div>
     </div>
-);
+  );
 };
 
 export default Contact;
