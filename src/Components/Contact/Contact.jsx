@@ -118,90 +118,95 @@ const Contact = () => {
     }, 2000);
   };
 
-  return (
+return (
     <div className="contact__container" id="Contact">
-      <div
-        className="contact__card"
-        ref={cardRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-      >
-        {loading ? (
-          <div className="contact__loader">
-            <img src={loaderGif} alt="Loading..." />
-          </div>
-        ) : submitted ? (
-          <div className="contact__success-message">
-            <p>Thank you for your message! We'll get back to you soon.</p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="contact__form" aria-live="polite">
-            {error && (
-              <div className="contact__error-message">
-                <p>{error}</p>
-              </div>
+        <div
+            className="contact__card"
+            ref={cardRef}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+        >
+            <h2 className="contact__title">Contact Us</h2>
+            <p className="contact__subtitle">We'd love to hear from you. Please fill out the form below.</p>
+
+            {submitted ? (
+                <div className="contact__success-message">
+                    <p>Thank you for your message! We'll get back to you soon.</p>
+                </div>
+            ) : (
+                <form onSubmit={handleSubmit} className="contact__form" aria-live="polite">
+                    {error && (
+                        <div className="contact__error-message">
+                            <p>{error}</p>
+                        </div>
+                    )}
+
+                    <div className="contact__form-group">
+                        <label htmlFor="name">Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                            aria-required="true"
+                        />
+                    </div>
+
+                    <div className="contact__form-group">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            aria-required="true"
+                        />
+                    </div>
+
+                    <div className="contact__form-group">
+                        <label htmlFor="subject">Subject</label>
+                        <input
+                            type="text"
+                            id="subject"
+                            name="subject"
+                            value={formData.subject}
+                            onChange={handleChange}
+                            required
+                            aria-required="true"
+                        />
+                    </div>
+
+                    <div className="contact__form-group">
+                        <label htmlFor="message">Message</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="5"
+                            value={formData.message}
+                            onChange={handleChange}
+                            required
+                            aria-required="true"
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" className="contact__submit-button" disabled={loading}>
+                        {loading ? 'Sending...' : 'Send Message'}
+                    </button>
+
+                    {loading && (
+                        <div className="contact__loader">
+                            <img src={loaderGif} alt="Loading..." />
+                        </div>
+                    )}
+                </form>
             )}
-
-            <div className="contact__form-group">
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                aria-required="true"
-              />
-            </div>
-
-            <div className="contact__form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                aria-required="true"
-              />
-            </div>
-
-            <div className="contact__form-group">
-              <label htmlFor="subject">Subject</label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                required
-                aria-required="true"
-              />
-            </div>
-
-            <div className="contact__form-group">
-              <label htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                aria-required="true"
-              ></textarea>
-            </div>
-
-            <button type="submit" className="contact__submit-button" disabled={loading}>
-              {loading ? 'Sending...' : 'Send Message'}
-            </button>
-          </form>
-        )}
-      </div>
+        </div>
     </div>
-  );
+);
 };
 
 export default Contact;
