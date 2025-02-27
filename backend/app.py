@@ -42,6 +42,9 @@ def send_email():
         subject = data.get("subject")
         message = data.get("message")
 
+        # Log the received data
+        print("Received data:", data)
+
         if not all([full_name, email, subject]):
             return jsonify({"error": "Full Name, Email, and Subject are required"}), 400
 
@@ -92,6 +95,7 @@ def send_email():
         return jsonify({"message": "Emails sent successfully"}), 200
 
     except Exception as e:
+        print("Error:", str(e))
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":

@@ -75,15 +75,17 @@ const Contact = () => {
 
     try {
       const data = await sendEmail(formData);
-      if (data.success) {
-        setResponseMessage("✅ Your message has been sent!");
+      if (data.message) {
+        setResponseMessage(`✅ ${data.message}`);
         setFormData({ fullName: "", email: "", subject: "", message: "" });
         setErrors({});
       } else {
         setResponseMessage(`❌ Error: ${data.error}`);
+        setIsError(true);
       }
     } catch (error) {
       setResponseMessage("❌ Server error. Please try again later.");
+      setIsError(true);
     } finally {
       setIsSubmitting(false);
       setTimeout(() => {
