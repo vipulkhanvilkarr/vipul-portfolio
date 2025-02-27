@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="footer-content">
           <img src={logo} alt="Logo" className="footer-logo" />
           <img src={nameImage} alt="Name" className="footer-name" />
-          <h1 className="footer h1">Connect with me</h1>
+          
           <div className="footer-icons">
             <a href="https://github.com/vipulkhanvilkar" target="_blank" rel="noopener noreferrer">
               <FaGithub size={15} className="footer-icon footer-icon-github" />

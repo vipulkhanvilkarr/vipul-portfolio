@@ -73,6 +73,7 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient-animation 3s ease infinite;
+  font-style: italic;
 }
 
 .highlight {

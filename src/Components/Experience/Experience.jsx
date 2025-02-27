@@ -1,6 +1,6 @@
 import React from "react";
 import { FaCss3, FaFigma, FaHtml5, FaJs, FaReact, FaPython, FaGit, FaGithub, FaLinux } from "react-icons/fa";
-import { SiRedis, SiMongodb, SiDjango,  SiFlask, SiRubyonrails, SiMysql, SiPostgresql, SiSqlite, SiMicrosoftsqlserver, SiNetlify, SiVercel, SiPowerbi, SiRedux, SiBootstrap, SiTailwindcss, SiTypescript } from "react-icons/si";
+import { SiRedis, SiMongodb, SiDjango,  SiFlask, SiRubyonrails, SiMysql, SiPostgresql, SiSqlite, SiMicrosoftsqlserver, SiNetlify, SiVercel, SiPowerbi, SiRedux, SiBootstrap, SiTailwindcss, SiTypescript, SiCanva } from "react-icons/si";
 import "../Experience/Experience.css";
 import { IoLogoVercel } from "react-icons/io5";
 import { RiNextjsFill } from "@remixicon/react";
@@ -30,7 +30,7 @@ const Experience = () => {
     { icon: <FaLinux color="#FCC624" size={50} />, name: "Linux" },
     { icon: <SiTypescript color="#3178C6" size={50} />, name: "TypeScript" },
     { icon: <RiNextjsFill color="var(--icon-color-github)" size={50} />, name: "Next.js" },
-    
+    { icon: <SiCanva color="#00C4CC" size={50} />, name: "Canva" },
   ];
 
   return (
