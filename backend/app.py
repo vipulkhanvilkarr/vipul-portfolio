@@ -9,8 +9,8 @@ load_dotenv()
 
 app = Flask(__name__)
 
-# Allow your Vercel frontend to communicate with this backend
-CORS(app, origins=["https://vipul-khanvilkar-portfolio.vercel.app/"])
+# Enable CORS for all routes (Recommended for debugging)
+CORS(app, resources={r"/*": {"origins": "https://vipul-khanvilkar-portfolio.vercel.app"}})
 
 # Configure Flask-Mail
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
@@ -30,8 +30,11 @@ mail = Mail(app)
 def home():
     return "Welcome to the Flask Backend!"
 
-@app.route("/send-email", methods=["POST"])
+@app.route("/send-email", methods=["OPTIONS", "POST"])
 def send_email():
+    if request.method == "OPTIONS":  # Preflight request
+        return '', 200
+
     try:
         data = request.json
         full_name = data.get("fullName")
