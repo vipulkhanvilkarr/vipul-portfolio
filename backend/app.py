@@ -20,6 +20,10 @@ app.config["MAIL_USERNAME"] = os.getenv("EMAIL_USER")
 app.config["MAIL_PASSWORD"] = os.getenv("EMAIL_PASS")
 app.config["MAIL_DEFAULT_SENDER"] = os.getenv("EMAIL_USER")
 
+# Log the email configuration to verify
+print("MAIL_USERNAME:", app.config["MAIL_USERNAME"])
+print("MAIL_DEFAULT_SENDER:", app.config["MAIL_DEFAULT_SENDER"])
+
 mail = Mail(app)
 
 @app.route("/")
