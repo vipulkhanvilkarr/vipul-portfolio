@@ -1,212 +1,127 @@
-import React, { useState, useEffect, useRef } from 'react';
-import './Contact.css';
-import loaderGif from '../../assets/loader.gif'; // Adjust the path as necessary
+import React, { useState } from "react";
+import "./Contact.css";
+import loaderGif from "../../assets/loader.gif";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    fullName: "",
+    email: "",
+    subject: "",
+    message: "",
   });
-
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const cardRef = useRef(null);
-
-  // Function to handle 3D rotation effect
-  const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
-
-    const card = cardRef.current;
-    const cardRect = card.getBoundingClientRect();
-
-    // Calculate mouse position relative to the card
-    const xPos = (e.clientX - cardRect.left) / cardRect.width;
-    const yPos = (e.clientY - cardRect.top) / cardRect.height;
-
-    // Calculate rotation values
-    const xRotation = 10 * (0.5 - yPos);
-    const yRotation = -10 * (0.5 - xPos);
-
-    // Apply the transformation
-    card.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
-  };
-
-  // Reset card position when mouse leaves
-  const handleMouseLeave = () => {
-    if (!cardRef.current) return;
-
-    // Smoothly reset the transformation
-    cardRef.current.style.transition = 'transform 0.5s ease';
-    cardRef.current.style.transform = 'rotateX(0) rotateY(0)';
-
-    // Remove the transition property after animation completes
-    setTimeout(() => {
-      if (cardRef.current) {
-        cardRef.current.style.transition = '';
-      }
-    }, 500);
-  };
-
-  useEffect(() => {
-    // Add parallax effect to form elements on scroll
-    const handleScroll = () => {
-      const elements = document.querySelectorAll('.contact__form-group, .contact__title, .contact__subtitle');
-      elements.forEach((element, index) => {
-        const speed = 1 + index * 0.02;
-        const yPos = window.scrollY * speed * 0.05;
-        element.style.transform = `translateY(${-yPos}px) translateZ(${yPos * 2}px)`;
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [responseMessage, setResponseMessage] = useState("");
+  const [isError, setIsError] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    // Add subtle animation on input
-    if (e.target) {
-      e.target.style.transition = 'transform 0.2s ease';
-      e.target.style.transform = 'translateY(-2px) scale(1.01)';
-
-      setTimeout(() => {
-        if (e.target) {
-          e.target.style.transform = 'translateY(0) scale(1)';
-        }
-      }, 200);
-    }
-
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError(''); // Clear any previous error
+    setIsSubmitting(true);
+    setIsError(false);
+    setResponseMessage("");
 
     // Simulate form submission
     setTimeout(() => {
-      // Simulate an error
-      const hasError = Math.random() > 0.5;
-
-      if (hasError) {
-        setError('An error occurred while submitting the form. Please try again.');
-        setLoading(false);
-        return;
-      }
-
-      setSubmitted(true);
-      setLoading(false);
-
-      // Reset form after submission
-      setTimeout(() => {
+      setIsSubmitting(false);
+      const success = Math.random() > 0.5; // Simulate success or error
+      if (success) {
+        setResponseMessage("Your message has been sent successfully!");
         setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
+          fullName: "",
+          email: "",
+          subject: "",
+          message: "",
         });
-        setSubmitted(false);
-      }, 3000);
+      } else {
+        setIsError(true);
+        setResponseMessage("An error occurred. Please try again.");
+      }
     }, 2000);
   };
 
-return (
-    <div className="contact__container" id="Contact">
-        <div
-            className="contact__card"
-            ref={cardRef}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-        >
-            <h2 className="contact__title">Contact Us</h2>
-            <p className="contact__subtitle">We'd love to hear from you. Please fill out the form below.</p>
-
-            {submitted ? (
-                <div className="contact__success-message">
-                    <p>Thank you for your message! We'll get back to you soon.</p>
-                </div>
-            ) : (
-                <form onSubmit={handleSubmit} className="contact__form" aria-live="polite">
-                    {error && (
-                        <div className="contact__error-message">
-                            <p>{error}</p>
-                        </div>
-                    )}
-
-                    <div className="contact__form-group">
-                        <label htmlFor="name">Name</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            required
-                            aria-required="true"
-                        />
-                    </div>
-
-                    <div className="contact__form-group">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                            aria-required="true"
-                        />
-                    </div>
-
-                    <div className="contact__form-group">
-                        <label htmlFor="subject">Subject</label>
-                        <input
-                            type="text"
-                            id="subject"
-                            name="subject"
-                            value={formData.subject}
-                            onChange={handleChange}
-                            required
-                            aria-required="true"
-                        />
-                    </div>
-
-                    <div className="contact__form-group">
-                        <label htmlFor="message">Message</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows="5"
-                            value={formData.message}
-                            onChange={handleChange}
-                            required
-                            aria-required="true"
-                        ></textarea>
-                    </div>
-
-                    <button type="submit" className="contact__submit-button" disabled={loading}>
-                        {loading ? 'Sending...' : 'Send Message'}
-                    </button>
-
-                    {loading && (
-                        <div className="contact__loader">
-                            <img src={loaderGif} alt="Loading..." />
-                        </div>
-                    )}
-                </form>
-            )}
-        </div>
+  return (
+    <div id="Contact" className="contact-wrapper">
+      <h1 className="text-2xl md:text-4xl font-bold text-black dark:text-white mb-8 text-center pt-20">
+        Contact Us
+      </h1>
+      <div  className="contact-container">
+        {isSubmitting ? (
+          <div className="loader-container">
+            <img src={loaderGif} alt="Loading..." className="loader" />
+          </div>
+        ) : responseMessage ? (
+          <div className={`response-message ${isError ? "error" : "success"}`}>
+            {responseMessage}
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="contact-form">
+            <div className="form-group">
+              <label htmlFor="fullName" className="form-label">
+                Full Name
+              </label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleChange}
+                className="form-input"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email" className="form-label">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="form-input"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="subject" className="form-label">
+                Subject
+              </label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                className="form-input"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="message" className="form-label">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                className="form-textarea"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" className="form-button">
+              Submit
+            </button>
+          </form>
+        )}
+      </div>
     </div>
-);
+  );
 };
 
 export default Contact;
