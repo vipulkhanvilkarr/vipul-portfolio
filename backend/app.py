@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_mail import Mail, Message
-from flask_cors import CORS
+from flask_cors import CORS  # Import CORS
 import os
 from dotenv import load_dotenv
 
@@ -8,7 +8,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)  # Allow React frontend to communicate with Flask
+
+# Allow your Vercel frontend to communicate with this backend
+CORS(app, origins=["https://your-vercel-frontend.vercel.app"])  # Enable CORS for Vercel
 
 # Configure Flask-Mail
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
@@ -83,4 +85,5 @@ def send_email():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Set port from environment, default to 5000
+    app.run(debug=True, host="0.0.0.0", port=port)  # Listen on all IP addresses and the dynamic port
