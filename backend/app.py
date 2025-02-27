@@ -10,7 +10,7 @@ load_dotenv()
 app = Flask(__name__)
 
 # Allow your Vercel frontend to communicate with this backend
-CORS(app, origins=["https://your-vercel-frontend.vercel.app"])  # Enable CORS for Vercel
+CORS(app, origins=["https://vipul-khanvilkar-portfolio.vercel.app/"])
 
 # Configure Flask-Mail
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
@@ -21,6 +21,10 @@ app.config["MAIL_PASSWORD"] = os.getenv("EMAIL_PASS")
 app.config["MAIL_DEFAULT_SENDER"] = os.getenv("EMAIL_USER")
 
 mail = Mail(app)
+
+@app.route("/")
+def home():
+    return "Welcome to the Flask Backend!"
 
 @app.route("/send-email", methods=["POST"])
 def send_email():
@@ -83,7 +87,6 @@ def send_email():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # Set port from environment, default to 5000
-    app.run(debug=True, host="0.0.0.0", port=port)  # Listen on all IP addresses and the dynamic port
+    port = int(os.getenv("PORT", 5000))  # Default to 5000 if PORT env variable is not set
+    app.run(host="0.0.0.0", port=port, debug=True)

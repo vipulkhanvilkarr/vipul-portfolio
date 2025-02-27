@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Contact.css";
 import loaderGif from "../../assets/loader.gif";
 
-const API_URL = "https://your-flask-app.onrender.com/send-email";
+const API_URL = "https://vipul-portfolio-flask-backend.onrender.com/send-email";
 
 async function sendEmail(data) {
   const response = await fetch(API_URL, {
