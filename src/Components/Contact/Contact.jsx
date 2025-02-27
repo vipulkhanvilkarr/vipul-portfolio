@@ -2,6 +2,21 @@ import React, { useState } from "react";
 import "./Contact.css";
 import loaderGif from "../../assets/loader.gif";
 
+const API_URL = "https://your-flask-app.onrender.com/send-email";
+
+async function sendEmail(data) {
+  const response = await fetch(API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  const result = await response.json();
+  return result;
+}
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -59,14 +74,8 @@ const Contact = () => {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-      if (response.ok) {
+      const data = await sendEmail(formData);
+      if (data.success) {
         setResponseMessage("✅ Your message has been sent!");
         setFormData({ fullName: "", email: "", subject: "", message: "" });
         setErrors({});
