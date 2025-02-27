@@ -4,16 +4,16 @@ import TextChange from "../TextChange";
 
 const Home = () => {
   return (
-    <div id= "Home" className="text-black dark:text-white flex w-full justify-between items-start p-10 md:p-20 pt-20 md:pt-32"> {/* Added pt-20 for mobile view and md:pt-32 for larger screens */}
-      <div className="md:w-2/4 md:pt-10 ">
-      <br />
+    <div id="Home" className="text-black dark:text-white flex w-full justify-between items-start p-10 md:p-20 pt-28 md:pt-32"> {/* Changed pt-20 to pt-28 for mobile view */}
+      <div className="md:w-2/4 md:pt-12 pt-12"> 
+        <br />
         <h1 className="text-xl md:text-6xl font-bold flex leading-normal tracking-tighter">
           <TextChange />
         </h1>
         <br />
-        <br />  
-        <p className="text-sm md:text-2xl tracking-tight ">
-        Building robust applications with clean and efficient code.
+        <br />
+        <p className="text-sm md:text-2xl tracking-tight">
+          Building robust applications with clean and efficient code.
         </p>
         <button className="mt-5 md:mt-10 text-white py-2 px-3 text-sm md:text-lg md:py-2 md:px-4 hover:opacity-85 duration-300 hover:scale-105 font-semibold rounded-3xl bg-[#465697]">
           Contact Me

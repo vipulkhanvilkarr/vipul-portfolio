@@ -34,7 +34,7 @@ const Experience = () => {
   ];
 
   return (
-    <div id="Experience" className="experience-container dark:experience-container p-10 md:p-24">
+    <div id="Experience" className="text-white flex flex-col items-center shadow-xl mx-0 md:mx-20 bg-opacity-30 rounded-lg p-12 pt-20 md:pt-12">
       <h1 className="text-2xl md:text-4xl font-bold text-black dark:text-white">
         Experience
       </h1>

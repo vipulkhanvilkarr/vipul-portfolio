@@ -1,127 +1,48 @@
-:root {
-  --icon-color-django: #092E20;
-  --icon-color-flask: #000000;
-  --icon-color-github: #181717;
-  --icon-color-vercel: #000000;
-  --icon-hover-shadow: rgba(0, 0, 0, 0.2);
-}
 
-.dark {
-  --icon-color-django: #ffffff;
-  --icon-color-flask: #ffffff;
-  --icon-color-github: #ffffff;
-  --icon-color-vercel: #ffffff;
-  --icon-hover-shadow: rgba(255, 255, 255, 0.5);
-  --icon-color-nextjs: #ffffff;
-}
-
-.tech-item {
-  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
-}
-
-.tech-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px var(--icon-hover-shadow);
-}
-
-.tech-item span {
-  font-size: 14px;
-  font-weight: bold;
-}
-
-/* Dark and Light Mode Animations */
-.dark-mode-item {
-  animation: darkModeAnimation 0.5s ease-in-out;
-}
-
-.light-mode-item {
-  animation: lightModeAnimation 0.5s ease-in-out;
-}
-
-@keyframes darkModeAnimation {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.5);
+  .tech-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
   }
-  to {
-    opacity: 1;
-    transform: scale(1);
-    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0);
+  
+  .tech-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px var(--icon-hover-shadow);
   }
-}
-
-@keyframes lightModeAnimation {
-  from {
-    opacity: 0;
-    transform: scale(1.1);
+  
+  .tech-item span {
+    font-size: 14px;
+    font-weight: bold;
   }
-  to {
-    opacity: 1;
-    transform: scale(1);
+  
+  /* Dark and Light Mode Animations */
+  .dark-mode-item {
+    animation: darkModeAnimation 0.5s ease-in-out;
   }
-}
-
-.experience-container {
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  transition: box-shadow 0.3s ease;
-  margin: 20px auto; /* Center horizontally */
-  max-width: 1200px; /* Optional: Limit the maximum width */
-}
-
-.experience-container.dark {
-  background-color: #333;
-  border-color: #444;
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-}
-
-.experience-container:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.experience-container.dark:hover {
-  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
-}
-
-/* Responsive box-shadow */
-@media (max-width: 768px) {
-  .experience-container {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 15px; /* Adjust padding for smaller screens */
+  
+  .light-mode-item {
+    animation: lightModeAnimation 0.5s ease-in-out;
   }
-
-  .experience-container:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
+  @keyframes darkModeAnimation {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+      box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+      box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0);
+    }
   }
-
-  .experience-container.dark {
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+  
+  @keyframes lightModeAnimation {
+    from {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
-
-  .experience-container.dark:hover {
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-  }
-}
-
-@media (max-width: 480px) {
-  .experience-container {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    padding: 10px; /* Adjust padding for smaller screens */
-  }
-
-  .experience-container:hover {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  .experience-container.dark {
-    box-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
-  }
-
-  .experience-container.dark:hover {
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
-  }
-}
+  
