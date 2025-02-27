@@ -75,18 +75,19 @@ def send_email():
             recipients=[email],
             html=f"""
             <html>
-                <body>
-                    <h1>Dear {full_name},</h1>
-                    <p>Thank you for reaching out to us! We have received your message with the following details:</p>
-                    <div>
-                        <p><strong>Email:</strong> {email}</p>
-                        <p><strong>Subject:</strong> {subject}</p>
-                        <p><strong>Message:</strong> {message}</p>
-                    </div>
-                    <p>Our team will review your request and get back to you shortly.</p>
-                    <p>Best regards,<br>Vipul Khanvilkar <br>Founder, Vipul Khanvilkar <br>
-                    <a href="https://www.linkedin.com/in/vipul-khanvilkar-184890242/">linkedin.com/in/vipul-khanvilkar</a></p>
-                </body>
+            <body>
+            <h1>Dear {full_name},</h1>
+            <p>Thank you for reaching out to us! We have received your message with the following details:</p>
+            <div>
+            <p><strong>Email:</strong> {email}</p>
+            <p><strong>Subject:</strong> {subject}</p>
+            <p><strong>Message:</strong> {message}</p>
+            </div>
+            <p>Our team will review your request and get back to you shortly.</p>
+            <p>Best regards,<br><br style="line-height: 1.5em;">Vipul Khanvilkar <br><br style="line-height: 1.5em;"><strong>Founder</strong>, Vipul Khanvilkar <br><br style="line-height: 1.5em;">
+            <a href="https://www.linkedin.com/in/vipul-khanvilkar-184890242/">linkedin.com/in/vipul-khanvilkar</a></p> <br><br style="line-height: 1.5em;">
+            <a href="https://vipul-khanvilkar-portfolio.vercel.app/ ">vipul-khanvilkar-portfolio.in<a>
+            </body>
             </html>
             """
         )

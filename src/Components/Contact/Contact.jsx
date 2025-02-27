@@ -90,7 +90,7 @@ const Contact = () => {
       setIsSubmitting(false);
       setTimeout(() => {
         setResponseMessage("");
-      }, 5000); // Reset the form and return to the main view after 5 seconds
+      }, 5000); 
     }
   };
 
