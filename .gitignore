@@ -28,3 +28,32 @@ build/
 *.njsproj
 *.sln
 *.sw?
+# Python Cache Files
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual Environment
+venv/
+
+# Environment Variables
+.env
+
+# Log files
+*.log
+
+# Flask Instance Folder
+instance/
+
+# SQLite database files
+*.sqlite
+
+# Node modules (if using frontend like React)
+node_modules/
+
+# Database files
+*.db
+
+# Other OS-specific files
+.DS_Store
+Thumbs.db

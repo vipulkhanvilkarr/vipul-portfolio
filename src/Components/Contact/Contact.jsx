@@ -12,10 +12,30 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [responseMessage, setResponseMessage] = useState("");
   const [isError, setIsError] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
+    // Validate fields on change
+    if (name === "email" && !validateEmail(value)) {
+      setErrors((prevErrors) => ({ ...prevErrors, email: "Invalid email address" }));
+    } else if (name === "fullName" && !validateName(value)) {
+      setErrors((prevErrors) => ({ ...prevErrors, fullName: "Full Name can only contain letters and spaces" }));
+    } else {
+      setErrors((prevErrors) => ({ ...prevErrors, [name]: value ? "" : `${name} is required` }));
+    }
+  };
+
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const validateName = (name) => {
+    const re = /^[A-Za-z\s]+$/;
+    return re.test(String(name));
   };
 
   const handleSubmit = async (e) => {
@@ -24,23 +44,43 @@ const Contact = () => {
     setIsError(false);
     setResponseMessage("");
 
-    // Simulate form submission
-    setTimeout(() => {
+    // Check for errors before submitting
+    const newErrors = {};
+    if (!formData.fullName) newErrors.fullName = "Full Name is required";
+    if (!validateName(formData.fullName)) newErrors.fullName = "Full Name can only contain letters and spaces";
+    if (!formData.email) newErrors.email = "Email is required";
+    if (!validateEmail(formData.email)) newErrors.email = "Invalid email address";
+    if (!formData.subject) newErrors.subject = "Subject is required";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       setIsSubmitting(false);
-      const success = Math.random() > 0.5; // Simulate success or error
-      if (success) {
-        setResponseMessage("Your message has been sent successfully!");
-        setFormData({
-          fullName: "",
-          email: "",
-          subject: "",
-          message: "",
-        });
+      return;
+    }
+
+    try {
+      const response = await fetch("http://127.0.0.1:5000/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        setResponseMessage("✅ Your message has been sent!");
+        setFormData({ fullName: "", email: "", subject: "", message: "" });
+        setErrors({});
       } else {
-        setIsError(true);
-        setResponseMessage("An error occurred. Please try again.");
+        setResponseMessage(`❌ Error: ${data.error}`);
       }
-    }, 2000);
+    } catch (error) {
+      setResponseMessage("❌ Server error. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => {
+        setResponseMessage("");
+      }, 5000); // Reset the form and return to the main view after 5 seconds
+    }
   };
 
   return (
@@ -48,7 +88,7 @@ const Contact = () => {
       <h1 className="text-2xl md:text-4xl font-bold text-black dark:text-white mb-8 text-center pt-20">
         Contact Us
       </h1>
-      <div  className="contact-container">
+      <div className="contact-container">
         {isSubmitting ? (
           <div className="loader-container">
             <img src={loaderGif} alt="Loading..." className="loader" />
@@ -61,7 +101,7 @@ const Contact = () => {
           <form onSubmit={handleSubmit} className="contact-form">
             <div className="form-group">
               <label htmlFor="fullName" className="form-label">
-                Full Name
+                Full Name <span style={{ color: "red" }}>*</span>
               </label>
               <input
                 type="text"
@@ -72,10 +112,11 @@ const Contact = () => {
                 className="form-input"
                 required
               />
+              {errors.fullName && <p className="error-message">{errors.fullName}</p>}
             </div>
             <div className="form-group">
               <label htmlFor="email" className="form-label">
-                Email
+                Email <span style={{ color: "red" }}>*</span>
               </label>
               <input
                 type="email"
@@ -86,10 +127,11 @@ const Contact = () => {
                 className="form-input"
                 required
               />
+              {errors.email && <p className="error-message">{errors.email}</p>}
             </div>
             <div className="form-group">
               <label htmlFor="subject" className="form-label">
-                Subject
+                Subject <span style={{ color: "red" }}>*</span>
               </label>
               <input
                 type="text"
@@ -100,6 +142,7 @@ const Contact = () => {
                 className="form-input"
                 required
               />
+              {errors.subject && <p className="error-message">{errors.subject}</p>}
             </div>
             <div className="form-group">
               <label htmlFor="message" className="form-label">
@@ -111,11 +154,10 @@ const Contact = () => {
                 value={formData.message}
                 onChange={handleChange}
                 className="form-textarea"
-                required
               ></textarea>
             </div>
-            <button type="submit" className="form-button">
-              Submit
+            <button type="submit" className="form-button" disabled={isSubmitting}>
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
         )}
