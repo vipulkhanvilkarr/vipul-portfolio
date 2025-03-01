@@ -28,9 +28,13 @@
 
 .form-label {
   margin-bottom: 0.5rem;
-  font-weight: bold;
 }
-
+.error-message {
+  color: red;
+}
+.span{
+  color: red;
+}
 .form-input,
 .form-textarea {
   padding: 0.5rem;
