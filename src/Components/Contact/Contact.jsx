@@ -59,7 +59,6 @@ const Contact = () => {
     setIsError(false);
     setResponseMessage("");
 
-    // Check for errors before submitting
     const newErrors = {};
     if (!formData.fullName) newErrors.fullName = "Full Name is required";
     if (!validateName(formData.fullName)) newErrors.fullName = "Full Name can only contain letters and spaces";
@@ -76,7 +75,7 @@ const Contact = () => {
     try {
       const data = await sendEmail(formData);
       if (data.message) {
-        setResponseMessage(`✅ ${data.message}`);
+        setResponseMessage("Thank you for reaching out! We’ll get back to you soon.");
         setFormData({ fullName: "", email: "", subject: "", message: "" });
         setErrors({});
       } else {

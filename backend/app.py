@@ -1,15 +1,13 @@
-from flask import Flask, request, jsonify
-from flask_mail import Mail, Message
-from flask_cors import CORS  # Import CORS
+from flask import Flask, request, jsonify # type: ignore
+from flask_mail import Mail, Message # type: ignore
+from flask_cors import CORS  # type: ignore # Import CORS
 import os
-from dotenv import load_dotenv
+from dotenv import load_dotenv # type: ignore
 
-# Load environment variables
 load_dotenv()
 
 app = Flask(__name__)
 
-# Enable CORS for all routes (Recommended for debugging)
 CORS(app, resources={r"/*": {"origins": "https://vipul-khanvilkar-portfolio.vercel.app"}})
 
 # Configure Flask-Mail
@@ -20,9 +18,7 @@ app.config["MAIL_USERNAME"] = os.getenv("EMAIL_USER")
 app.config["MAIL_PASSWORD"] = os.getenv("EMAIL_PASS")
 app.config["MAIL_DEFAULT_SENDER"] = os.getenv("EMAIL_USER")
 
-# Log the email configuration to verify
-print("MAIL_USERNAME:", app.config["MAIL_USERNAME"])
-print("MAIL_DEFAULT_SENDER:", app.config["MAIL_DEFAULT_SENDER"])
+
 
 mail = Mail(app)
 
