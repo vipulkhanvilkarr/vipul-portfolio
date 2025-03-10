@@ -19,8 +19,12 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full flex flex-wrap justify-between md:items-center text-black dark:text-white px-10 pt-6 md:px-20 bg-white dark:bg-black bg-opacity-90 dark:bg-opacity-90 shadow-lg z-50">
       <div className="flex items-center">
-        <img src={darkMode ? darkLogo : lightLogo} alt="Logo" className="h-8 w-8 md:h-12 md:w-11" />
-        <img src={name} alt="Name" className="h-15 w-14 md:h-30 md:w-30" />
+        <a href="#Home">
+          <img src={darkMode ? darkLogo : lightLogo} alt="Logo" className="h-8 w-8 md:h-12 md:w-11" />
+        </a>
+        <a href="#Home">
+          <img src={name} alt="Name" className="h-15 w-14 md:h-30 md:w-30" />
+        </a>
       </div>
 
       <ul className={`fixed top-0 h-full w-3/4 bg-white dark:bg-black bg-opacity-90 dark:bg-opacity-90 transition-all duration-300 ease-in-out flex flex-col items-center justify-center gap-6 md:static md:h-auto md:w-auto md:bg-transparent md:dark:bg-transparent md:flex-row md:gap-6 md:mx-0 md:py-0 md:px-0 z-40 
